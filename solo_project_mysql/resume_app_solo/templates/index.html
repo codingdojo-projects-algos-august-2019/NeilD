@@ -1,0 +1,218 @@
+<!-- Resume App Solo
+Neil Denning -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index_stylesheet.css') }}">
+    <title>Resume App Solo</title>
+    <!-- <style>        
+        *{
+            padding: 0px;
+            margin: 0px auto;
+
+        }
+
+        body{
+            background-color:rgb(0, 0, 0);
+        }
+
+        #container{
+            background-color: rgb(0, 0, 0);
+            min-height: 400px;
+            width: 970px;
+        }
+
+        h1{
+            display: inline-block;
+            margin: 10px 0px 20px 70px;
+            padding: 0px 0px 0px 0px;           
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(100, 170, 255);
+            font-size: 56px;
+            text-align: center;
+            text-shadow: 2px 2px 2px rgb(0, 0, 0);
+            letter-spacing: 2px;
+        }
+
+        h4{
+            display: inline-block;
+            margin: 10px 0px 20px 350px;
+            padding: 0px 0px 0px 0px;           
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(248, 250, 205);
+            font-size: 18px;
+            text-align: center;
+            text-shadow: 2px 2px 2px rgb(0, 0, 0);
+            letter-spacing: 3px;
+        }
+
+        div{
+            background-image: linear-gradient(rgb(0, 49, 109),rgb(80, 109, 31)rgb(41, 109, 0));
+        }
+
+        .left{
+            display: inline-block;
+            vertical-align: top;
+            width: 440px;
+            border: 2px solid rgb(100, 170, 255);
+            border-radius: 50px;
+            background-image: linear-gradient(rgb(0, 0, 0),rgb(1, 62, 99),rgb(0, 0, 0));
+            margin: 40px 0px 40px 30px;
+        }
+
+        .right{
+            display: inline-block;
+            vertical-align: top;
+            width: 440px;
+            border: 2px solid rgb(100, 170, 255);
+            border-radius: 50px;
+            background-image: linear-gradient(rgb(0, 0, 0),rgb(1, 62, 99),rgb(0, 0, 0));
+            margin: 150px 0px 0px 25px;
+        }
+
+        label{
+            display: inline-block;
+            vertical-align: top;
+            margin: 0px 0px 0px 70px;
+            padding: 5px 20px 5px 20px;           
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(100, 170, 255);
+            font-size: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 2px rgb(0, 0, 0);
+            letter-spacing: 3px;
+        }
+
+        .input_box{
+            display: inline-block;
+            vertical-align: top;
+            width: 250px;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: lighter;
+            letter-spacing: 3px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(100, 170, 255);
+            margin: 5px 0px 10px 90px;
+            padding: 0px 0px 0px 10px;
+            text-shadow: 1px 1px 1px black;
+            box-shadow: 2px 2px 2px black;           
+            font-size: 20px;
+            border: 1px solid rgb(100, 170, 255);
+        }
+
+        .register_button{
+            display: inline-block;
+            vertical-align: top;
+            background-image: linear-gradient(rgb(0, 0, 0),rgb(1, 62, 99),rgb(0, 0, 0));
+            margin: 20px 0px 20px 150px;
+            padding: 10px 15px 10px 15px;           
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(100, 170, 255);
+            font-size: 18px;
+            text-align: center;
+            text-shadow: 2px 2px 2px rgb(0, 0, 0);
+            letter-spacing: 3px;
+            border: 2px solid rgb(100, 170, 255);
+            border-radius: 10px;
+        }
+        
+        .login_button{
+            display: inline-block;
+            vertical-align: top;
+            background-image: linear-gradient(rgb(0, 0, 0),rgb(1, 62, 99),rgb(0, 0, 0));
+            margin: 20px 0px 20px 150px;
+            padding: 10px 15px 10px 15px;           
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(100, 170, 255);
+            font-size: 18px;
+            text-align: center;
+            text-shadow: 2px 2px 2px rgb(0, 0, 0);
+            letter-spacing: 3px;
+            border: 2px solid rgb(100, 170, 255);
+            border-radius: 10px;
+        }
+
+        p{
+            display: inline-block;
+            background-color: rgb(0,0,0);
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(255, 0, 0);
+            font-size: 20px;
+            text-align: center;
+            margin: 5px 0px 0px 10px;
+            padding: 3px 10px 3px 10px;
+            border-radius: 10px;
+        }
+
+        .red{
+            color: rgb(191, 0, 0);
+        }
+
+    </style> -->
+
+</head>
+<body>
+    <main id="container">
+
+        <div class="left">
+
+            <h1>Registration</h1>
+
+            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %} 
+            {% endwith %} 
+
+            <form action="/register" method="POST">
+
+                <label for="first_name">First Name</label>
+                <input class="input_box" type="text" name="first_name">
+
+                <label for="last_name">Last Name</label>
+                <input class="input_box" type="text" name="last_name">
+
+                <label for="email">Email</label>
+                <input class="input_box" type="text" name="email">
+    
+                <label for="password">Password</label>
+                <input class="input_box"  type="password" name="password">    
+                
+                <label for="password">Confirm Password</label>
+                <input class="input_box"  type="password" name="c_password">
+        
+                <input class="register_button" type="submit" name="submit" value="Register">
+    
+            </form>
+        </div>
+
+        <div class="right">
+
+            <h1>Login</h1>
+
+            <form action="/login" method="POST">
+
+                <label for="email">Email</label>
+                <input class="input_box" type="text" name="email">
+    
+                <label for="password">Password</label>
+                <input class="input_box"  type="password" name="password">          
+        
+                <input class="login_button" type="submit" name="submit" value="Login">
+    
+            </form>
+        </div>
+        <footer>
+            <h4>Powered By <span class="red">ReddGhost</span></h4>
+        </footer>
+    </main>
+
+</body>
+</html>

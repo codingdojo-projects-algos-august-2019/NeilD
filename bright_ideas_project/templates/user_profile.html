@@ -1,0 +1,33 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user_profile_stylesheet.css') }}">
+    <title>Bright Ideas User Profile</title>
+
+</head>
+<body>
+    <main id="container">
+        <h1>User profile</h1>
+        <a href="/landing">Bright Ideas</a>
+        <a class="logout_button" href="/logout">Logout</a>
+
+    <div class="top">
+        <h3>Name: "{{ user_posts.name }}"</h3>
+        <h3>Alias: "{{ user_posts.alias }}"</h3>
+        <h3>Email: "{{ user_posts.email }}"</h3>   
+    </div>
+    <div class="top">
+            <h3>Total Number of Posts: {{ user_posts.total_posts }}</h3>
+            <h3>Total Number of Likes {{ user_likes.total_likes }}</h3> 
+        </div>
+    <footer>
+        <h4>Powered By <span class="red">GoodTimes</span></h4>
+    </footer>
+    </main>
+</body>
+</html>

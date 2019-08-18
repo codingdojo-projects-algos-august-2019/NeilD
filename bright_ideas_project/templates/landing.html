@@ -1,0 +1,80 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/landing_stylesheet.css') }}">
+    <title>Bright Ideas Landing</title>
+
+
+</head>
+<body>
+    <main id="container">
+        <h1>Hi "{{ user.alias }}" </h1>
+        <a class="edit_link" href="/edit/{{session['user_id']}}">Edit My Account</a>
+        <a class="logout_button" href="/logout">Logout</a>
+
+        <div class="top">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error_red">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}             
+    
+            <form action="/save_bright_idea" method="POST">
+
+    
+                <label for="content">Bright Idea</label>
+                <input class="bright_idea_box" type="text" name="content" placeholder="post something witty here...">
+
+                <input class="submit_button" type="submit" name="submit" value="Add Bright Idea">
+            </form>
+        </div>
+
+        <div class="middle">
+            {% if bright_ideas %}
+                {% for bright_idea in bright_ideas %}
+                <div class="bright_idea_post">
+                    <p><a href="/user_profile/{{bright_idea['user_id']}}">{{ bright_idea.alias }}</a> says:</p>
+                    <p>Bright Idea: "{{ bright_idea['content']}}"</p>               
+
+                    <p>{{ bright_idea['likes'] }}</p> 
+                
+
+                {% if bright_idea.id in liked_bright_ideas %}
+                <a href="/unlike/{{bright_idea['id']}}"><button>Unlike This Idea</button></a>
+                {% else: %}
+                <a href="/like/{{bright_idea['id']}}"><button>Like This Idea</button></a>
+                {% endif %}
+                        
+                <!-- <a href="/bright_idea_details/{{bright_idea['id']}}"><button>Bright Idea Details</button></a> -->
+                {% if session['user_id'] == bright_idea.user_id %}
+                    <a href="/delete/{{bright_idea['id']}}"><button>Delete Bright Idea</button></a>
+
+                    
+                {% endif %}
+                
+                <p><a href="/bright_idea/{{ bright_idea['id'] }}">{{ bright_idea['times_liked'] }} people </a>like this.</p>
+                  
+                </div>
+
+                    
+                {%  endfor %}
+            {% endif %}
+
+        </div>
+
+
+        <footer>
+            <h4>Powered By <span class="red">GoodTimes</span></h4>
+        </footer>
+    </main>
+</body>
+</html>

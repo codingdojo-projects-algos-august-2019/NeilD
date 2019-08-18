@@ -1,0 +1,44 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/edit_stylesheet.css') }}">
+    <title>Bright Ideas Edit Info</title>
+
+</head>
+<body>
+    <main id="container">
+        <h1>Edit My Info</h1>
+        <a href="/landing">Back to Home</a>
+        <a class="logout_button" href="/logout">Logout</a>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error_red">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %} 
+    <div class="top">          
+        <form action="/update_user_info/{{ session['user_id'] }}" method="POST">
+            <label for="name">Name</label>
+            <input class="input_box" type="text" name="name" placeholder="{{ user.name }}" value="{{ user.name }}">
+
+            <label for="alias">Alias</label>
+            <input class="input_box" type="text" name="alias" placeholder="{{ user.alias }}" value="{{ user.alias }}">
+
+            <label for="email">Email</label>
+            <input class="input_box" type="text" name="email" placeholder="{{ user.email }}" value="{{ user.email }}">
+
+            <input class="update_button" type="submit" name="submit" value="Update">
+        </form> 
+    </div>
+    <footer>
+        <h4>Powered By <span class="red">GoodTimes</span></h4>
+    </footer>
+    </main>
+</body>
+</html>

@@ -11,6 +11,14 @@ function pushFront(array, value){
 results = pushFront([3, 1, 4, 9], 11);
 console.log(results);
 
+function pushFront2(arr, val){
+    for(var n = arr.length; n >= 0; n--){
+        arr[n] = arr[n - 1];
+    }
+    arr[0] = val;
+    return arr;
+}
+
 
 // Pop Front
 // Given an array, remove and return the value at the beginning of the array. Do this without using any built-in array methods except pop().

@@ -34,6 +34,18 @@ console.log(results);
 // Given an array, index, and additional value, insert the value into array at given index. Do this without using built-in array methods. 
 // You can think of pushFront(arr,val) as equivalent to insertAt(arr,0,val).
 var array = [3, 1, 4, 9];
+function insertAt(arr, idx, val) {
+	for (var n = arr.length; n >= idx; n--) {
+		arr[n] = arr[n - 1];
+	}
+	arr[idx] = val;
+	return arr;
+}
+results = insertAt([3, 1, 4, 9], 2, 88);
+console.log(results);
+
+
+var array = [3, 1, 4, 9];
 function insertAt(array, index, value){
     array[index] = value;
     return array;
@@ -50,6 +62,18 @@ function removeAt(array, index){
 }
 results = removeAt([3, 1, 4, 9], 3)
 console.log(results);
+
+function removeAt(arr, idx) {
+    var temp = arr[idx];
+    for (var n = idx; n < arr.length -1; n++) {
+        var temp = arr[n];
+        arr[n] = arr[n+1];
+        arr[n+1] = temp;
+    }
+    arr.pop();
+    return temp;
+}
+
 // Swap Pairs
 // Swap positions of successive pairs of values of given array. If length is odd, do not change the final element. For [1,2,3,4], return [2,1,4,3]. 
 // For example, change input ["Brendan",true,42] to [true,"Brendan",42]. As with all array challenges, do this without using any built-in array methods.
